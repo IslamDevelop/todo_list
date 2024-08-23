@@ -58,7 +58,7 @@ displayProject() {
             cardProject.remove()
             
         })
-
+    
         h1div.addEventListener('click',(e) => {
            const chototam = e.target.textContent
            const BodyText = document.querySelector('.bodyH1')
