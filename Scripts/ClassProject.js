@@ -27,6 +27,8 @@ localProject() {
         return false
     } else {
         
+        console.log()
+        localStorage.setItem('PrList',JSON.stringify(this._projectList))
         this.displayProject()
     }
          
@@ -42,36 +44,41 @@ displayProject() {
 
         const nameProject = document.createElement('h1')
         nameProject.textContent = item.name;
+        nameProject.classList.add('nameProject')
         const h1div = document.createElement('div')
         h1div.classList.add('h1div')
         h1div.append(nameProject)
 
         const dateProject = document.createElement('data')
         dateProject.textContent = item.date;
+        dateProject.style.fontSize = '25px';
 
         const removeButton = document.createElement('button')
         removeButton.classList.add('removeButton')
-        removeButton.textContent = 'Remove'
+        removeButton.textContent = 'Удалить'
         removeButton.addEventListener('click', () => {
             this.removeProject(index)
             cardProject.textContent = ''
             cardProject.remove()
             
         })
-    
+        
         h1div.addEventListener('click',(e) => {
            const chototam = e.target.textContent
            const BodyText = document.querySelector('.bodyH1')
           
-           BodyText.textContent = `${chototam}`
+           BodyText.textContent = `${item.name}`
+           const idProject = item.id
+
+           openProject(idProject)
+           this.displayProject()
+           TodoLibrary.localTodo(idProject)
            
            
-           
-             openProject(chototam)
+           //!1
              
              TodoLibrary._event = chototam
-             TodoLibrary.localProject()
-             
+            
              
         }
 )
@@ -82,6 +89,7 @@ displayProject() {
         Cards.appendChild(cardProject)
         
     })
+    console.log(this._projectList)
 }
-    
+
 }

@@ -18,8 +18,14 @@ buttonTest.textContent = 'Добавить'
 
 buttonTest.addEventListener('click',() => {
     const name = inputProject.value
-    const project1 = new project (name,new Date)
-    
+    const dataDay = new Date().getDate()
+    const dataMounth = new Date().getMonth() + 1
+    const dataYear = new Date().getFullYear()
+    const dataTime = new Date().getHours()
+    const dataMinute = new Date().getMinutes()
+
+    const data = `${dataTime}:${dataMinute} | ${dataDay}.${dataMounth}.${dataYear}`
+    const project1 = new project(name,data, []);
     projectsLibrary.addProject(project1)
    Form.remove()
 })

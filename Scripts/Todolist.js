@@ -78,13 +78,20 @@ select.append(option1,option2,option3)
         const text = inputTextTodo.value
         const title = ev
         
+    const dataDay = new Date().getDate()
+    const dataMounth = new Date().getMonth() + 1
+    const dataYear = new Date().getFullYear()
+    const dataTime = new Date().getHours()
+    const dataMinute = new Date().getMinutes()
+
+    const data = `${dataTime}:${dataMinute} | ${dataDay}.${dataMounth}.${dataYear}`
        const importance = select.value
        console.log(importance)
      
         const checkbox = Boolean()
         
         
-        const todo1 = new Todos (title,importance,name,text,checkbox,new Date())
+        const todo1 = new Todos (title,importance,name,text,checkbox,data)
         
         TodoLibrary.addProject(todo1)
        Form.remove()
